@@ -2,7 +2,7 @@
 
 译自：<https://github.com/Araq/Nim/tree/devel/doc>
 
-文档格式为 reStructuredText，可以使用[这个](http://rst.ninjs.org)工具在线编辑
+文档格式为 reStructuredText，可以在[这里](http://nim-lang.org/rst.html)找到格式规范。使用`nim rst2html`命令转换为 HTML。
 
 ## 翻译规范
 
