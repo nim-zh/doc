@@ -1,9 +1,9 @@
 ===================================
-   Nim Compiler User Guide
+Nim 编译器用户指南
 ===================================
 
-:Author: Andreas Rumpf
-:Version: |nimversion|
+:作者: Andreas Rumpf
+:版本: |nimversion|
 
 .. contents::
 
@@ -15,22 +15,19 @@
 Introduction
 ============
 
-This document describes the usage of the *Nim compiler*
-on the different supported platforms. It is not a definition of the Nim
-programming language (therefore is the `manual <manual.html>`_).
+本文介绍了 Nim 编译器在不同平台上的使用。它并不是 Nim 编程语言的定义（如果想了解定义请看这篇 `指南 <manual.html>`_ ）。
 
-Nim is free software; it is licensed under the
-`MIT License <http://www.opensource.org/licenses/mit-license.php>`_.
+Nim 是自由软件，使用 `MIT <http://www.opensource.org/licenses/mit-license.php>`_ 协议授权。
 
 
-Compiler Usage
+编译器的使用
 ==============
 
-Command line switches
+命令行参数
 ---------------------
-Basic command line switches are:
+基础命令行参数：
 
-Usage:
+用法：
 
 .. include:: basicopt.txt
 
