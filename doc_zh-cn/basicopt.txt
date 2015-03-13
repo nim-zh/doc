@@ -1,39 +1,39 @@
 ::
 
-    nim command [options] [projectfile] [arguments]
+    nim 命令 [选项] [项目文件] [程序参数]
 
 Command:
-  //compile, c                compile project with default code generator (C)
-  //doc                       generate the documentation for inputfile
-  //doc2                      generate the documentation for the whole project
+  //compile, c                用默认（C）代码生成器编译项目
+  //doc                       为输入的文件生成文档
+  //doc2                      为所有项目生成文档
 
-Arguments:
-  arguments are passed to the program being run (if --run option is selected)
-Options:
-  -p, --path:PATH           add path to search paths
-  -d, --define:SYMBOL       define a conditional symbol
-  -u, --undef:SYMBOL        undefine a conditional symbol
-  -f, --forceBuild          force rebuilding of all modules
-  --stackTrace:on|off       turn stack tracing on|off
-  --lineTrace:on|off        turn line tracing on|off
-  --threads:on|off          turn support for multi-threading on|off
-  -x, --checks:on|off       turn all runtime checks on|off
-  --objChecks:on|off        turn obj conversion checks on|off
-  --fieldChecks:on|off      turn case variant field checks on|off
-  --rangeChecks:on|off      turn range checks on|off
-  --boundChecks:on|off      turn bound checks on|off
-  --overflowChecks:on|off   turn int over-/underflow checks on|off
-  -a, --assertions:on|off   turn assertions on|off
-  --floatChecks:on|off      turn all floating point (NaN/Inf) checks on|off
-  --nanChecks:on|off        turn NaN checks on|off
-  --infChecks:on|off        turn Inf checks on|off
-  --deadCodeElim:on|off     whole program dead code elimination on|off
-  --opt:none|speed|size     optimize not at all or for speed|size
-  --debugger:native|endb    use native debugger (gdb) | ENDB (experimental)
+程序参数：
+  程序参数会在程序运行时传递进去（如果启用了 --run 选项的话）
+选项：
+  -p, --path:PATH           添加路径到搜索路径中
+  -d, --define:SYMBOL       定义一个条件标识符
+  -u, --undef:SYMBOL        取消定义一个条件标识符
+  -f, --forceBuild          强制重建所有模块
+  --stackTrace:on|off       开关堆栈跟踪
+  --lineTrace:on|off        开关轨迹追踪
+  --threads:on|off          开关多线程支持
+  -x, --checks:on|off       开关所有运行时检查
+  --objChecks:on|off        开关对象转换检查
+  --fieldChecks:on|off      开关实例的变种字段检查
+  --rangeChecks:on|off      开关范围检查
+  --boundChecks:on|off      开关边界检查
+  --overflowChecks:on|off   开关整型的 溢出/下溢 检查
+  -a, --assertions:on|off   开关断言
+  --floatChecks:on|off      开关所有浮点（NaN/Inf）检查
+  --nanChecks:on|off        开关 NaN 检查
+  --infChecks:on|off        开关 Inf 检查
+  --deadCodeElim:on|off     开关所有程序的死代码消除
+  --opt:none|speed|size     优化 无|运行速度|文件体积
+  --debugger:native|endb    使用 原生调试器（gdb）|ENDB（实验性的）
   --app:console|gui|lib|staticlib
-                            generate a console app|GUI app|DLL|static library
-  -r, --run                 run the compiled program with given arguments
-  --advanced                show advanced command line switches
-  -h, --help                show this help
+                            生成一个 命令行程序|图形界面程序|DLL|静态库
+  -r, --run                 使用给予的参数运行编译的程序
+  --advanced                显示高级命令行参数
+  -h, --help                显示本帮助
 
 Note, single letter options that take an argument require a colon. E.g. -p:PATH.

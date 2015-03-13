@@ -33,7 +33,7 @@ Nim 是自由软件，使用 `MIT <http://www.opensource.org/licenses/mit-licens
 
 ----
 
-Advanced command line switches are:
+高级命令行参数：
 
 .. include:: advopt.txt
 
@@ -181,24 +181,20 @@ resides in its own directory so that the generated ``nimcache`` directory
 is not shared between different projects.
 
 
-Cross compilation
+交叉编译
 =================
 
-To cross compile, use for example::
+一个交叉编译的例子：
 
   nim c --cpu:i386 --os:linux --compile_only --gen_script myproject.nim
 
-Then move the C code and the compile script ``compile_myproject.sh`` to your
-Linux i386 machine and run the script.
+然后将 C 源码和编译脚本 ``compile_myproject.sh`` 移动到你的 Linux i386 机器上，运行脚本。
 
-Another way is to make Nim invoke a cross compiler toolchain::
+另一种方式是调用交叉编译工具链：
 
   nim c --cpu:arm --os:linux myproject.nim
 
-For cross compilation, the compiler invokes a C compiler named
-like ``$cpu.$os.$cc`` (for example arm.linux.gcc) and the configuration
-system is used to provide meaningful defaults. For example for ``ARM`` your
-configuration file should contain something like::
+Nim 编译器会读取配置文件中名字为 ``$cpu.$os.$cc`` 的配置（比如 arm.linux.gcc）来调用对应的 C 编译器。例如 ``ARM`` 的配置是这样的：
 
   arm.linux.gcc.path = "/usr/bin"
   arm.linux.gcc.exe = "arm-linux-gcc"
