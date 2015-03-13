@@ -131,20 +131,19 @@ binary literals with ``0b`` and octal literals with ``0o``. A leading zero
 alone does not produce an octal.
 
 
-The var statement
+var 语句
 =================
-The var statement declares a new local or global variable:
+var 语句可以声明一个新的局部或全局变量：
 
 .. code-block::
-  var x, y: int # declares x and y to have the type ``int``
+  var x, y: int # 声明 x 和 y，并且类型为 ``int``
 
-Indentation can be used after the ``var`` keyword to list a whole section of
-variables:
+``var`` 后加上缩进可以用于声明一整段的变量：
 
 .. code-block::
   var
     x, y: int
-    # a comment can occur here too
+    # 注释也可以出现在这里
     a, b, c: string
 
 
