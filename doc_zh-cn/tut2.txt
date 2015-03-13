@@ -1,79 +1,67 @@
 ======================
-Nim Tutorial (Part II)
+Nim 语言教程 (第二部分)
 ======================
 
-:Author: Andreas Rumpf
-:Version: |nimversion|
+:作者: Andreas Rumpf
+:版本: |nimversion|
 
-.. contents::
+.. 内容::
 
 
-Introduction
+介绍
 ============
 
   "Repetition renders the ridiculous reasonable." -- Norman Wildberger
 
 
-This document is a tutorial for the advanced constructs of the *Nim*
-programming language. **Note that this document is somewhat obsolete as the**
-`manual <manual.html>`_ **contains many more examples of the advanced language
-features.**
+这篇文档是 *Nim* 编程语言高级部分的教程。**注意这篇文档可能已经过时**
+`manual <manual.html>`_ **中包含有更多关于语言高级特性的示例。**
 
 
-Pragmas
+编译注记
 =======
 
-Pragmas are Nim's method to give the compiler additional information/
-commands without introducing a massive number of new keywords. Pragmas are
-enclosed in the special ``{.`` and ``.}`` curly dot brackets. This tutorial
-does not cover pragmas. See the `manual <manual.html#pragmas>`_ or `user guide
-<nimc.html#additional-features>`_ for a description of the available
-pragmas.
+编译注记是 Nim 用于告知编译器附加信息/命令的方法，以免定义一堆新关键字。
+编译注记包含于特殊的 ``{.`` 和 ``.}`` 花括号点对之中。本教程没有介绍编译
+注记的具体内容，了解可用的编译注记可从 `manual <manual.html#pragmas>`_ 或
+`user guide<nimc.html#additional-features>`_ 中获取。
 
 
-Object Oriented Programming
+面向对象编程
 ===========================
 
-While Nim's support for object oriented programming (OOP) is minimalistic,
-powerful OOP techniques can be used. OOP is seen as *one* way to design a
-program, not *the only* way. Often a procedural approach leads to simpler
-and more efficient code. In particular, preferring composition over inheritance
-is often the better design.
+Nim 的面向对象(OOP)支持简约而优雅，你可以自由地使用强大的 OOP 技术。显然 OOP
+是*一种*程序设计的方式，但这方式并不*唯一*。通常，使用过程式的编程方式编写的
+代码更加有效。特别地，组合通常比继承更佳。
 
 
 Objects
 -------
 
-Like tuples, objects are a means to pack different values together in a
-structured way. However, objects provide many features that tuples do not:
-They provide inheritance and information hiding. Because objects encapsulate
-data, the ``T()`` object constructor should only be used internally and the
-programmer should provide a proc to initialize the object (this is called
-a *constructor*).
+和 tuples 一样，objects 是一种把不同的值打包成一种结构的方法。但 objects 提供
+了很多 tuples 没有的特性，如：继承与信息隐藏。因为 objects 包装了数据，``T()``
+对象(object)构造应该在内部进行，程序员应该提供一个初始化对象的 proc (称做*constructor*)。
 
-Objects have access to their type at runtime. There is an
-``of`` operator that can be used to check the object's type:
+可以在运行时访问 Objects 的类型。``of`` 运算符能用于检查 object 的类型：
 
 .. code-block:: nim
   type
     Person = object of RootObj
-      name*: string  # the * means that `name` is accessible from other modules
-      age: int       # no * means that the field is hidden from other modules
+      name*: string  # * 表示 `name` 可以从其他模块访问
+      age: int       # 没有 * 意味着这个字段对其他模块而言是不可见的
 
-    Student = object of Person # Student inherits from Person
-      id: int                  # with an id field
+    Student = object of Person # Student 继承自 Person
+      id: int                  # 另有一个 id 字段
 
   var
     student: Student
     person: Person
   assert(student of Student) # is true
-  # object construction:
+  # 对象构造:
   student = Student(name: "Anton", age: 5, id: 2)
 
-Object fields that should be visible from outside the defining module have to
-be marked by ``*``. In contrast to tuples, different object types are
-never *equivalent*. New object types can only be defined within a type
-section.
+Object 中的字段若希望在本模块之外的地方使用，则必须用 ``*`` 标记。不同于 tuples，
+不同的 object 绝不*相等*。新的 object 类型只能在 type 块内定义。
 
 Inheritance is done with the ``object of`` syntax. Multiple inheritance is
 currently not supported. If an object type has no suitable ancestor, ``RootObj``
