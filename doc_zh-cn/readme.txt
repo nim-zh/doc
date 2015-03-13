@@ -1,7 +1,6 @@
 ============================
-Nim's documenation system
+Nim 文档系统
 ============================
 
-This folder contains Nim's documentation. The documentation
-is written in a format called *reStructuredText*, a markup language that reads
-like ASCII and can be converted to HTML automatically!
+本文件夹包含了 Nim 的文档，文档由一种叫 *reStructuredText* 的标记语言写成，
+它看起来像 ASCII，可以用工具自动转为 HTML。
