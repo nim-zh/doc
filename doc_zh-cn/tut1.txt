@@ -1,13 +1,13 @@
 =====================
-Nim Tutorial (Part I)
+Nim 语言教程（第一部分）
 =====================
 
-:Author: Andreas Rumpf
-:Version: |nimversion|
+:作者: Andreas Rumpf
+:版本: |nimversion|
 
 .. contents::
 
-Introduction
+介绍
 ============
 
 .. raw:: html
@@ -16,96 +16,83 @@ Introduction
   </p></blockquote>
 
 
-This document is a tutorial for the programming language *Nim*. 
-This tutorial assumes that you are familiar with basic programming concepts
-like variables, types or statements but is kept very basic. The `manual
-<manual.html>`_ contains many more examples of the advanced language features.
+这篇文档是 *Nim* 编程语言的教程。
+本教程将会假定你知道一些编程基础概念，像变量、类型和声明。
+更高级的语言特性可以查看这篇 `指南 <manual.html>`_ 。
 
 
 
-The first program
+第一个程序
 =================
 
-We start the tour with a modified "hello world" program:
+让我们来从一个修改过的"hello world"程序开始吧：
 
 .. code-block:: Nim
-  # This is a comment
+  # 这是一个注释
   echo("What's your name? ")
   var name: string = readLine(stdin)
   echo("Hi, ", name, "!")
 
 
-Save this code to the file "greetings.nim". Now compile and run it::
+将代码保存为"greetings.nim"，然后编译并运行它：
 
   nim compile --run greetings.nim
 
-With the ``--run`` `switch <nimc.html#command-line-switches>`_ Nim
-executes the file automatically after compilation. You can give your program
-command line arguments by appending them after the filename::
+若含有 ``--run`` `参数 <nimc.html#command-line-switches>`_ ，
+Nim 将会在编译后自动执行程序。你可以在文件名后加入需要传递给你的程序的参数：
 
   nim compile --run greetings.nim arg1 arg2
 
-Commonly used commands and switches have abbreviations, so you can also use::
+常用的命令和参数都有缩写，所以你也可以这样写：
 
   nim c -r greetings.nim
 
-To compile a release version use::
+若要编译可发行版本请使用：
   
   nim c -d:release greetings.nim
 
-By default the Nim compiler generates a large amount of runtime checks
-aiming for your debugging pleasure. With ``-d:release`` these checks are
-`turned off and optimizations are turned on
-<nimc.html#compile-time-symbols>`_.
+默认Nim编译器会生成大量运行时检查以便你调试时使用。使用 ``-d:release`` 参数将这些检查
+`关闭并开启优化 <nimc.html#compile-time-symbols>`_ 。
 
-Though it should be pretty obvious what the program does, I will explain the
-syntax: statements which are not indented are executed when the program
-starts. Indentation is Nim's way of grouping statements. Indentation is
-done with spaces only, tabulators are not allowed.
+虽然你应该很容易理解这个程序在做什么，但是我还是来解释一下它的语法吧：
+那些没有缩进的语句会在程序启动时执行。缩进是 Nim 用来对语句分组的方法。缩进只能用空格而不能用TAB键代替。
 
-String literals are enclosed in double quotes. The ``var`` statement declares
-a new variable named ``name`` of type ``string`` with the value that is
-returned by the `readLine <system.html#readLine,File>`_ procedure. Since the
-compiler knows that `readLine <system.html#readLine,File>`_ returns a string,
-you can leave out the type in the declaration (this is called `local type
-inference`:idx:). So this will work too:
+字符串必须用双引号括起来。 ``var`` 语句定义了一个名为 ``name`` ，类型为 ``string`` 的新变量。
+这个变量被赋予了 `readLine <system.html#readLine,File>`_ 方法所返回的值。
+因为编译器知道 `readLine <system.html#readLine,File>`_ 方法返回了一个 ``string`` ，
+所以你也可以不用声明这个变量的类型（这就是本地类型推断），直接写成这样：
 
 .. code-block:: Nim
   var name = readLine(stdin)
 
-Note that this is basically the only form of type inference that exists in
-Nim: it is a good compromise between brevity and readability.
+要注意，这基本上是 Nim 的唯一一种类型推断方法（这样可以很好的平衡简洁性和可读性）。
 
-The "hello world" program contains several identifiers that are already known
-to the compiler: ``echo``, `readLine <system.html#readLine,File>`_, etc.
-These built-ins are declared in the system_ module which is implicitly
-imported by any other module.
+"hello world"程序包含了一些编译器已知的标识符，比如 ``echo`` 和 `readLine <system.html#readLine,File>`_ 。
+这些内置的标识符在 system_ 模块中被声明，而 system_ 模块是默认被隐藏 import 在所有模块里的。
 
 
-Lexical elements
+语法规则
 ================
 
-Let us look at Nim's lexical elements in more detail: like other
-programming languages Nim consists of (string) literals, identifiers,
-keywords, comments, operators, and other punctuation marks.
+让我们来看看Nim的词汇元素的更多细节吧：
+像其他语言一样，Nim由字符串、标识符、关键词、注释、运算符和其他标点符号组成。
 
 
-String and character literals
+字符串和字符
 -----------------------------
 
-String literals are enclosed in double quotes; character literals in single
-quotes. Special characters are escaped with ``\``: ``\n`` means newline, ``\t``
-means tabulator, etc. There are also *raw* string literals:
+字符串被双引号包围；字符用单引号包围。
+特殊字符使用 ``\`` 来转义： ``\n`` 代表换行， ``\t`` 代表水平制表符等等。
+同时我们也有原始字符串：
 
 .. code-block:: Nim
   r"C:\program files\nim"
 
-In raw literals the backslash is not an escape character.
+在原始字符串里， ``\`` 不会被转义。
 
-The third and last way to write string literals are *long string literals*.
-They are written with three quotes: ``""" ... """``; they can span over
-multiple lines and the ``\`` is not an escape character either. They are very
-useful for embedding HTML code templates for example.
+第三个也是最后一个用于表达字符串的方法为长字符串。
+长字符串被6个双引号包围： ``""" ... """`` ，可以跨多行。
+同时 ``\`` 也不会被转义。所以在嵌入 HTML 等代码时十分方便。
 
 
 Comments
