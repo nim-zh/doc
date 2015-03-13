@@ -1,50 +1,48 @@
-Advanced commands:
-  //compileToC, cc          compile project with C code generator
-  //compileToCpp, cpp       compile project to C++ code
-  //compileToOC, objc       compile project to Objective C code
-  //js                      compile project to Javascript
-  //rst2html                convert a reStructuredText file to HTML
-  //rst2tex                 convert a reStructuredText file to TeX
-  //jsondoc                 extract the documentation to a json file
-  //buildIndex              build an index for the whole documentation
-  //run                     run the project (with Tiny C backend; buggy!)
-  //genDepend               generate a DOT file containing the
-                            module dependency graph
-  //dump                    dump all defined conditionals and search paths
-  //check                   checks the project for syntax and semantic
-  //idetools                compiler support for IDEs: possible options:
-    --track:FILE,LINE,COL   track a file/cursor position
+高级命令:
+  //compileToC, cc          编译程序到C 
+  //compileToCpp, cpp       编译程序到C++ 
+  //compileToOC, objc       编译程序到Objective-C 
+  //js                      编译程序到Javascript
+  //rst2html                将reStructuredText文件转换到HTML
+  //rst2tex                 将reStructuredText文件转换到TeX
+  //jsondoc                 将文档解压到JSON文件
+  //buildIndex              为整个文档构建索引
+  //run                     运行程序 (使用简易C后端; 超多bug!)
+  //genDepend               生成一个包含模块依赖图的DOT文件
+  //dump                    转储所有定义的条件和搜索路径
+  //check                   检查程序的语法和语义
+  //idetools                对IDE的编译器支持: 可能的选项:
+    --track:FILE,LINE,COL   追踪文件/光标位置
     --trackDirty:DIRTY_FILE,ORIG_FILE,LINE,COL
-                            track a file, currently not saved to disk
-    --suggest               suggest all possible symbols at position
-    --def                   list all possible definitions at position
-    --context               list possible invocation context
-    --usages                list all usages of the symbol at position
-    --eval                  evaluates an expression
-  //serve                   start the compiler as a service mode (CAAS)
-    --server.type:TYPE      either stdin or tcp
-    --server.port:PORT      port for tcp mode, by default 6000
-    --server.address:HOST   binds to that address, by default ""
+                            追踪目前还没有保存到磁盘的文件
+    --suggest               建议当前位置的所有可能的symbol
+    --def                   列出当前位置所有可能的定义
+    --context               列出可能的上下文调用
+    --usages                列出当前位置symbol所有的用法
+    --eval                  计算一个表达式
+  //serve                   启动编译服务模式 (CAAS)
+    --server.type:TYPE      服务类型：stdin或tcp
+    --server.port:PORT      TCP端口, 默认6000
+    --server.address:HOST   绑定到该地址, 默认 ""
 
-Advanced options:
-  -o, --out:FILE            set the output filename
-  --stdout                  output to stdout
-  --listFullPaths           list full paths in messages
-  -w, --warnings:on|off     turn all warnings on|off
-  --warning[X]:on|off       turn specific warning X on|off
-  --hints:on|off            turn all hints on|off
-  --hint[X]:on|off          turn specific hint X on|off
-  --lib:PATH                set the system library path
-  --import:PATH             add an automatically imported module
-  --include:PATH            add an automatically included module
-  --nimcache:PATH           set the path used for generated files
-  --header:FILE             the compiler should produce a .h file (FILE
-                            is optional)
-  -c, --compileOnly         compile only; do not assemble or link
-  --noLinking               compile but do not link
-  --noMain                  do not generate a main procedure
-  --genScript               generate a compile script (in the 'nimcache'
-                            subdirectory named 'compile_$project$scriptext')
+高级选项:
+  -o, --out:FILE            设置输出文件名
+  --stdout                  输出到stdout
+  --listFullPaths           用信息列出完整路径
+  -w, --warnings:on|off     开关所有警告
+  --warning[X]:on|off       开关特定警告X
+  --hints:on|off            开关所有提示
+  --hint[X]:on|off          开关特定提示X
+  --lib:PATH                设置系统库文件路径
+  --import:PATH             添加一个"自动导入"的模块
+  --include:PATH            添加一个"自动包含"的模块
+  --nimcache:PATH           设置缓存路径
+  --header:FILE             编译器应当生成头文件(文件路径可选)
+  -c, --compileOnly         仅编译; 不进行汇编和链接
+  --noLinking               编译但不链接
+  --noMain                  不要生成一个Main过程
+  --genScript               生成一个编译脚本 (在'nimcache'
+                            子文件夹以'compile_$project$scriptext'命名)
   --os:SYMBOL               set the target operating system (cross-compilation)
   --cpu:SYMBOL              set the target processor (cross-compilation)
   --debuginfo               enables debug information
