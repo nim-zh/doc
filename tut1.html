@@ -1155,7 +1155,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <ul class="simple"><li><a class="reference" id="_toc" href="#">字符串和字符</a></li>
 <li><a class="reference" id="comments_toc" href="#comments">Comments</a></li>
 <li><a class="reference" id="numbers_toc" href="#numbers">Numbers</a></li>
-</ul><li><a class="reference" id="the-var-statement_toc" href="#the-var-statement">The var statement</a></li>
+</ul><li><a class="reference" id="var_toc" href="#var">var 语句</a></li>
 <li><a class="reference" id="the-assignment-statement_toc" href="#the-assignment-statement">The assignment statement</a></li>
 <li><a class="reference" id="constants_toc" href="#constants">Constants</a></li>
 <li><a class="reference" id="the-let-statement_toc" href="#the-let-statement">The let statement</a></li>
@@ -1211,7 +1211,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </div>
   <div class="nine columns" id="content">
   <p class="module-desc"><table class="docinfo" frame="void" rules="none"><col class="docinfo-name" /><col class="docinfo-content" /><tbody valign="top"><tr><th class="docinfo-name">作者:</th><td> Andreas Rumpf</td></tr>
-<tr><th class="docinfo-name">版本:</th><td> 0.10.3</td></tr>
+<tr><th class="docinfo-name">版本:</th><td> |nimversion|</td></tr>
 </tbody></table>
 <h1><a class="toc-backref" id="" href="#">介绍</a></h1><blockquote><p>
 "Der Mensch ist doch ein Augentier -- sch&ouml;ne Dinge w&uuml;nsch ich mir."
@@ -1251,11 +1251,11 @@ out inside this with no indentation restrictions.
       yes(&quot;May I ask a pointless question?&quot;) &quot;&quot;&quot;</span></pre>
 <h2><a class="toc-backref" id="numbers" href="#numbers">Numbers</a></h2><p>Numerical literals are written as in most other languages. As a special twist, underscores are allowed for better readability: <tt class="docutils literal"><span class="pre">1_000_000</span></tt> (one million). A number that contains a dot (or 'e' or 'E') is a floating point literal: <tt class="docutils literal"><span class="pre">1.0e9</span></tt> (one billion). Hexadecimal literals are prefixed with <tt class="docutils literal"><span class="pre">0x</span></tt>, binary literals with <tt class="docutils literal"><span class="pre">0b</span></tt> and octal literals with <tt class="docutils literal"><span class="pre">0o</span></tt>. A leading zero alone does not produce an octal.</p>
 
-<h1><a class="toc-backref" id="the-var-statement" href="#the-var-statement">The var statement</a></h1><p>The var statement declares a new local or global variable:</p>
-<pre><span class="Keyword">var</span> <span class="Identifier">x</span><span class="Punctuation">,</span> <span class="Identifier">y</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Comment"># declares x and y to have the type ``int``</span></pre><p>Indentation can be used after the <tt class="docutils literal"><span class="pre">var</span></tt> keyword to list a whole section of variables:</p>
+<h1><a class="toc-backref" id="var" href="#var">var 语句</a></h1><p>var 语句可以声明一个新的局部或全局变量：</p>
+<pre><span class="Keyword">var</span> <span class="Identifier">x</span><span class="Punctuation">,</span> <span class="Identifier">y</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Comment"># 声明 x 和 y，并且类型为 ``int``</span></pre><p><tt class="docutils literal"><span class="pre">var</span></tt> 后加上缩进可以用于声明一整段的变量：</p>
 <pre><span class="Keyword">var</span>
   <span class="Identifier">x</span><span class="Punctuation">,</span> <span class="Identifier">y</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
-  <span class="Comment"># a comment can occur here too</span>
+  <span class="Comment"># 注释也可以出现在这里</span>
   <span class="Identifier">a</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">,</span> <span class="Identifier">c</span><span class="Punctuation">:</span> <span class="Identifier">string</span></pre>
 <h1><a class="toc-backref" id="the-assignment-statement" href="#the-assignment-statement">The assignment statement</a></h1><p>The assignment statement assigns a new value to a variable or more generally to a storage location:</p>
 <pre><span class="Keyword">var</span> <span class="Identifier">x</span> <span class="Operator">=</span> <span class="StringLit">&quot;abc&quot;</span> <span class="Comment"># introduces a new variable `x` and assigns a value to it</span>
@@ -1912,7 +1912,7 @@ out inside this with no indentation restrictions.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-03-13 18:25:09 UTC</small>
+        <small>Made with Nim. Generated: 2015-03-13 21:25:45 UTC</small>
       </div>
     </div>
   </div>
