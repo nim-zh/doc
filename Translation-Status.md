@@ -1,0 +1,65 @@
+# Nim 语言文档翻译状态速查
+
+##目标语言：zh-CN
+
+- [ ] manual/
+  - [ ] about.txt
+  - [ ] compiler_msgs.txt
+  - [ ] definitions.txt
+  - [ ] effects.txt
+  - [ ] exceptions.txt
+  - [ ] ffi.txt
+  - [ ] generics.txt
+  - [ ] lexing.txt
+  - [ ] locking.txt
+  - [ ] modules.txt
+  - [ ] pragmas.txt
+  - [ ] procs.txt
+  - [ ] special_ops.txt
+  - [ ] stmts.txt
+  - [ ] syntax.txt
+  - [ ] taint.txt
+  - [ ] templates.txt
+  - [ ] threads.txt
+  - [ ] trmacros.txt
+  - [ ] type_bound_ops.txt
+  - [ ] type_rel.txt
+  - [ ] type_sections.txt
+  - [ ] typedesc.txt
+  - [ ] types.txt
+- [ ] advopt.txt
+- [ ] apis.txt
+- [ ] astspec.txt
+- [ ] backends.txt
+- [ ] basicopt.txt (98%)
+- [ ] docgen.txt
+- [x] docs.txt (100%)
+- [ ] effects.txt
+- [ ] endb.txt
+- [ ] estp.txt
+- [ ] exception_hiearchy_fragment.txt
+- [ ] filelist.txt
+- [ ] filters.txt
+- [ ] gc.txt
+- [ ] grammar.txt
+- [ ] idetools.txt
+- [ ] intern.txt
+- [ ] keywords.txt
+- [ ] koch.txt
+- [ ] lib.txt
+- [ ] manual.txt
+- [ ] mytest.cfg (???)
+- [ ] nimc.txt (9%)
+- [ ] nimfix.txt
+- [ ] nimgrep.txt
+- [ ] niminst.txt 
+- [ ] overview.txt
+- [ ] pegdocs.txt
+- [x] readme.txt (100%)
+- [ ] regexprs.txt
+- [ ] sets_fragment.txt
+- [ ] spawn.txt
+- [ ] subexes.txt
+- [ ] tools.txt
+- [ ] tut1.txt (7%)
+- [ ] tut2.txt (7%)
