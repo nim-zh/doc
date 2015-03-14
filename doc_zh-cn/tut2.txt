@@ -38,9 +38,9 @@ Nim 的面向对象(OOP)支持简约而优雅，你可以自由地使用强大�
 Objects
 -------
 
-和 tuples 一样，objects 是一种把不同的值打包成一种结构的方法。但 objects 提供
-了很多 tuples 没有的特性，如：继承与信息隐藏。因为 objects 包装了数据，``T()``
-对象(object)构造应该在内部进行，程序员应该提供一个初始化对象的 proc (称做*constructor*)。
+和 tuples 一样，objects 是一种把不同的值用结构的方式打包在一起的方法。但 objects 
+提供了很多 tuples 没有的特性，如：继承与信息隐藏。因为 objects 包装了数据，对象
+构造器 ``T()`` 只能在内部使用，程序员应该提供一个初始化对象的 proc (称做*构造器*)。
 
 可以在运行时访问 Objects 的类型。``of`` 运算符能用于检查 object 的类型：
 
@@ -63,40 +63,36 @@ Objects
 Object 中的字段若希望在本模块之外的地方使用，则必须用 ``*`` 标记。不同于 tuples，
 不同的 object 绝不*相等*。新的 object 类型只能在 type 块内定义。
 
-Inheritance is done with the ``object of`` syntax. Multiple inheritance is
-currently not supported. If an object type has no suitable ancestor, ``RootObj``
-can be used as its ancestor, but this is only a convention. Objects that have
-no ancestor are implicitly ``final``. You can use the ``inheritable`` pragma
-to introduce new object roots apart from ``system.RootObj``. (This is used
-in the GTK wrapper for instance.)
+继承用 ``object of`` 的语法实现，多重继承尚未支持。如果类型没有合适的基类(ancestor)，
+可以使用 ``RootObj`` 作为其基类，但这只是一个惯例。没有指定基类的 Objects 会被隐式
+指定为 ``final`` 的，你可以用 ``inheritable`` 编译注记来指定一个新的对象基类(roots)，
+而不是 ``system.RootObj``。(如GTK的包装器)。
 
 
-**Note**: Composition (*has-a* relation) is often preferable to inheritance
-(*is-a* relation) for simple code reuse. Since objects are value types in
-Nim, composition is as efficient as inheritance.
+**注意**: 对于代码重用，组合 (*has-a* 关系) 通常比继承 (*is-a* 关系) 更好，Nim 中的
+objects 是值类型，因而组合与继承的效率相当。
 
 
-Mutually recursive types
+互递归类型
 ------------------------
 
-Objects, tuples and references can model quite complex data structures which
-depend on each other; they are *mutually recursive*. In Nim
-these types can only be declared within a single type section. (Anything else
-would require arbitrary symbol lookahead which slows down compilation.)
+Objects, tuples 及引用(references)可以塑造出相互依赖的相当复杂的数据结构。称作 *互递归*。
+在 Nim 中，这些类型只能在单个 type 块中声明。(不在此 type 块中的其它任何的符号,需要回溯
+搜索会导致降低编译速度。)
 
-Example:
+例:
 
 .. code-block:: nim
   type
-    Node = ref NodeObj # a traced reference to a NodeObj
+    Node = ref NodeObj # 建立了一个对 NodeObj 的跟踪引用
     NodeObj = object
-      le, ri: Node     # left and right subtrees
-      sym: ref Sym     # leaves contain a reference to a Sym
+      le, ri: Node     # 左右子树
+      sym: ref Sym     # 叶子包含了对 Sym 的引用
 
-    Sym = object       # a symbol
-      name: string     # the symbol's name
-      line: int        # the line the symbol was declared in
-      code: PNode      # the symbol's abstract syntax tree
+    Sym = object       # 符号
+      name: string     # 符号的名字
+      line: int        # 符号声明所在的行
+      code: PNode      # 符号的抽象语法树
 
 
 Type conversions
