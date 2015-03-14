@@ -24,7 +24,7 @@ Nim 语言教程 (第二部分)
 编译注记是 Nim 用于告知编译器附加信息/命令的方法，以免定义一堆新关键字。
 编译注记包含于特殊的 ``{.`` 和 ``.}`` 花括号点对之中。本教程没有介绍编译
 注记的具体内容，了解可用的编译注记可从 `manual <manual.html#pragmas>`_ 或
-`user guide<nimc.html#additional-features>`_ 中获取。
+`user guide <nimc.html#additional-features>`_ 中获取。
 
 
 面向对象编程
@@ -66,7 +66,7 @@ Object 中的字段若希望在本模块之外的地方使用，则必须用 ``*
 继承用 ``object of`` 的语法实现，多重继承尚未支持。如果类型没有合适的基类(ancestor)，
 可以使用 ``RootObj`` 作为其基类，但这只是一个惯例。没有指定基类的 Objects 会被隐式
 指定为 ``final`` 的，你可以用 ``inheritable`` 编译注记来指定一个新的对象基类(roots)，
-而不是 ``system.RootObj``。(如GTK的包装器)。
+而不是 ``system.RootObj`` 。(如GTK的包装器)。
 
 
 **注意**: 对于代码重用，组合 (*has-a* 关系) 通常比继承 (*is-a* 关系) 更好，Nim 中的
@@ -76,7 +76,7 @@ objects 是值类型，因而组合与继承的效率相当。
 互递归类型
 ------------------------
 
-Objects, tuples 及引用(references)可以塑造出相互依赖的相当复杂的数据结构。称作 *互递归*。
+Objects, tuples 及引用(references)可以塑造出相互依赖的相当复杂的数据结构。称作 *互递归* 。
 在 Nim 中，这些类型只能在单个 type 块中声明。(不在此 type 块中的其它任何的符号,需要回溯
 搜索会导致降低编译速度。)
 
