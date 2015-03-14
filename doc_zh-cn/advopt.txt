@@ -20,7 +20,7 @@
     --context               列出可能的上下文调用
     --usages                列出当前位置symbol所有的用法
     --eval                  计算一个表达式
-  //serve                   启动编译服务模式 (CAAS)
+  //serve                   以编译服务模式运行 (CAAS)
     --server.type:TYPE      服务类型：stdin或tcp
     --server.port:PORT      TCP端口, 默认6000
     --server.address:HOST   绑定到该地址, 默认 ""
@@ -29,10 +29,10 @@
   -o, --out:FILE            设置输出文件名
   --stdout                  输出到stdout
   --listFullPaths           用信息列出完整路径
-  -w, --warnings:on|off     开关所有警告
-  --warning[X]:on|off       开关特定警告X
-  --hints:on|off            开关所有提示
-  --hint[X]:on|off          开关特定提示X
+  -w, --warnings:on|off     开/关所有警告
+  --warning[X]:on|off       开/关特定警告X
+  --hints:on|off            开/关所有提示
+  --hint[X]:on|off          开/关特定提示X
   --lib:PATH                设置系统库文件路径
   --import:PATH             添加一个"自动导入"的模块
   --include:PATH            添加一个"自动包含"的模块
@@ -43,27 +43,26 @@
   --noMain                  不要生成一个Main过程
   --genScript               生成一个编译脚本 (在'nimcache'
                             子文件夹以'compile_$project$scriptext'命名)
-  --os:SYMBOL               set the target operating system (cross-compilation)
-  --cpu:SYMBOL              set the target processor (cross-compilation)
-  --debuginfo               enables debug information
-  -t, --passC:OPTION        pass an option to the C compiler
-  -l, --passL:OPTION        pass an option to the linker
-  --cincludes:DIR           modify the C compiler header search path
-  --clibdir:DIR             modify the linker library search path
-  --clib:LIBNAME            link an additional C library
-                            (you should omit platform-specific extensions)
-  --genMapping              generate a mapping file containing
-                            (Nim, mangled) identifier pairs
-  --project                 document the whole project (doc2)
-  --docSeeSrcUrl:url        activate 'see source' for doc and doc2 commands
+  --os:SYMBOL               设定目标操作系统(交叉编译)
+  --cpu:SYMBOL              设定目标处理器(交叉编译)
+  --debuginfo               启用调试信息输出
+  -t, --passC:OPTION        传递选项给 C 编译器
+  -l, --passL:OPTION        传递选项给 链接器
+  --cincludes:DIR           修改头文件搜索路径
+  --clibdir:DIR             修改库文件搜索路径
+  --clib:LIBNAME            链接一个附加的库
+                            (你应该避免使用特定于平台的扩展)
+  --genMapping              生成一个包含
+                            (Nim, mangled)标识符对的映射文件
+  --project                 为整个项目生成文档(doc2)
+  --docSeeSrcUrl:url        为doc和doc2命令激活 'see source' 功能
                             (see doc.item.seesrc in config/nimdoc.cfg)
   --lineDir:on|off          generation of #line directive on|off
-  --embedsrc                embeds the original source code as comments
-                            in the generated output
-  --threadanalysis:on|off   turn thread analysis on|off
-  --tlsEmulation:on|off     turn thread local storage emulation on|off
-  --taintMode:on|off        turn taint mode on|off
-  --implicitStatic:on|off   turn implicit compile time evaluation on|off
+  --embedsrc                将源代码以注释嵌入到所生成的文件中
+  --threadanalysis:on|off   开/关线程分析
+  --tlsEmulation:on|off     开/关线程本地存储模拟
+  --taintMode:on|off        开/关污染模式
+  --implicitStatic:on|off   开/关隐含编译耗时评判
   --patterns:on|off         turn pattern matching on|off
   --skipCfg                 do not read the general configuration file
   --skipUserCfg             do not read the user's configuration file
@@ -72,7 +71,7 @@
   --gc:refc|v2|markAndSweep|boehm|none
                             select the GC to use; default is 'refc'
   --index:on|off            turn index file generation on|off
-  --putenv:key=value        set an environment variable
+  --putenv:key=value        设置一个环境变量
   --NimblePath:PATH         add a path for Nimble support
   --noNimblePath            deactivate the Nimble path
   --excludePath:PATH        exclude a path from the list of search paths
@@ -84,6 +83,6 @@
   --listCmd                 list the commands used to execute external programs
   --parallelBuild:0|1|...   perform a parallel build
                             value = number of processors (0 for auto-detect)
-  --verbosity:0|1|2|3       set Nim's verbosity level (1 is default)
-  --experimental            enable experimental language features
-  -v, --version             show detailed version information
+  --verbosity:0|1|2|3       设置Nim的"啰嗦"程度 (默认值是1)
+  --experimental            启用实验性语言特性
+  -v, --version             显示详细的版本信息

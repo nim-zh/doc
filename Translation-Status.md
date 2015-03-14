@@ -27,7 +27,7 @@
   - [ ] type_sections.txt
   - [ ] typedesc.txt
   - [ ] types.txt
-- [ ] advopt.txt
+- [ ] advopt.txt (80%)
 - [ ] apis.txt
 - [ ] astspec.txt
 - [ ] backends.txt
