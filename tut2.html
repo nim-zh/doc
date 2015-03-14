@@ -1153,7 +1153,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <li><a class="reference" id="_toc" href="#">编译注记</a></li>
 <li><a class="reference" id="_toc" href="#">面向对象编程</a></li>
 <ul class="simple"><li><a class="reference" id="objects_toc" href="#objects">Objects</a></li>
-<li><a class="reference" id="mutually-recursive-types_toc" href="#mutually-recursive-types">Mutually recursive types</a></li>
+<li><a class="reference" id="_toc" href="#">互递归类型</a></li>
 <li><a class="reference" id="type-conversions_toc" href="#type-conversions">Type conversions</a></li>
 <li><a class="reference" id="object-variants_toc" href="#object-variants">Object variants</a></li>
 <li><a class="reference" id="methods_toc" href="#methods">Methods</a></li>
@@ -1187,7 +1187,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 <h1><a class="toc-backref" id="" href="#">面向对象编程</a></h1><p>Nim 的面向对象(OOP)支持简约而优雅，你可以自由地使用强大的 OOP 技术。显然 OOP 是*一种*程序设计的方式，但这方式并不*唯一*。通常，使用过程式的编程方式编写的 代码更加有效。特别地，组合通常比继承更佳。</p>
 
-<h2><a class="toc-backref" id="objects" href="#objects">Objects</a></h2><p>和 tuples 一样，objects 是一种把不同的值打包成一种结构的方法。但 objects 提供 了很多 tuples 没有的特性，如：继承与信息隐藏。因为 objects 包装了数据，``T()`` 对象(object)构造应该在内部进行，程序员应该提供一个初始化对象的 proc (称做*constructor*)。</p>
+<h2><a class="toc-backref" id="objects" href="#objects">Objects</a></h2><p>和 tuples 一样，objects 是一种把不同的值用结构的方式打包在一起的方法。但 objects 提供了很多 tuples 没有的特性，如：继承与信息隐藏。因为 objects 包装了数据，对象 构造器 <tt class="docutils literal"><span class="pre">T()</span></tt> 只能在内部使用，程序员应该提供一个初始化对象的 proc (称做*构造器*)。</p>
 <p>可以在运行时访问 Objects 的类型。``of`` 运算符能用于检查 object 的类型：</p>
 <pre><span class="Keyword">type</span>
   <span class="Identifier">Person</span> <span class="Operator">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
@@ -1203,21 +1203,21 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <span class="Identifier">assert</span><span class="Punctuation">(</span><span class="Identifier">student</span> <span class="Keyword">of</span> <span class="Identifier">Student</span><span class="Punctuation">)</span> <span class="Comment"># is true</span>
 <span class="Comment"># 对象构造:</span>
 <span class="Identifier">student</span> <span class="Operator">=</span> <span class="Identifier">Student</span><span class="Punctuation">(</span><span class="Identifier">name</span><span class="Punctuation">:</span> <span class="StringLit">&quot;Anton&quot;</span><span class="Punctuation">,</span> <span class="Identifier">age</span><span class="Punctuation">:</span> <span class="DecNumber">5</span><span class="Punctuation">,</span> <span class="Identifier">id</span><span class="Punctuation">:</span> <span class="DecNumber">2</span><span class="Punctuation">)</span></pre><p>Object 中的字段若希望在本模块之外的地方使用，则必须用 <tt class="docutils literal"><span class="pre">*</span></tt> 标记。不同于 tuples， 不同的 object 绝不*相等*。新的 object 类型只能在 type 块内定义。</p>
-<p>Inheritance is done with the <tt class="docutils literal"><span class="pre">object of</span></tt> syntax. Multiple inheritance is currently not supported. If an object type has no suitable ancestor, <tt class="docutils literal"><span class="pre">RootObj</span></tt> can be used as its ancestor, but this is only a convention. Objects that have no ancestor are implicitly <tt class="docutils literal"><span class="pre">final</span></tt>. You can use the <tt class="docutils literal"><span class="pre">inheritable</span></tt> pragma to introduce new object roots apart from <tt class="docutils literal"><span class="pre">system.RootObj</span></tt>. (This is used in the GTK wrapper for instance.)</p>
-<p><strong>Note</strong>: Composition (<em>has-a</em> relation) is often preferable to inheritance (<em>is-a</em> relation) for simple code reuse. Since objects are value types in Nim, composition is as efficient as inheritance.</p>
+<p>继承用 <tt class="docutils literal"><span class="pre">object of</span></tt> 的语法实现，多重继承尚未支持。如果类型没有合适的基类(ancestor)， 可以使用 <tt class="docutils literal"><span class="pre">RootObj</span></tt> 作为其基类，但这只是一个惯例。没有指定基类的 Objects 会被隐式 指定为 <tt class="docutils literal"><span class="pre">final</span></tt> 的，你可以用 <tt class="docutils literal"><span class="pre">inheritable</span></tt> 编译注记来指定一个新的对象基类(roots)， 而不是 <tt class="docutils literal"><span class="pre">system.RootObj</span></tt> 。(如GTK的包装器)。</p>
+<p><strong>注意</strong>: 对于代码重用，组合 (<em>has-a</em> 关系) 通常比继承 (<em>is-a</em> 关系) 更好，Nim 中的 objects 是值类型，因而组合与继承的效率相当。</p>
 
-<h2><a class="toc-backref" id="mutually-recursive-types" href="#mutually-recursive-types">Mutually recursive types</a></h2><p>Objects, tuples and references can model quite complex data structures which depend on each other; they are <em>mutually recursive</em>. In Nim these types can only be declared within a single type section. (Anything else would require arbitrary symbol lookahead which slows down compilation.)</p>
-<p>Example:</p>
+<h2><a class="toc-backref" id="" href="#">互递归类型</a></h2><p>Objects, tuples 及引用(references)可以塑造出相互依赖的相当复杂的数据结构。称作 <em>互递归</em> 。 在 Nim 中，这些类型只能在单个 type 块中声明。(不在此 type 块中的其它任何的符号,需要回溯 搜索会导致降低编译速度。)</p>
+<p>例:</p>
 <pre><span class="Keyword">type</span>
-  <span class="Identifier">Node</span> <span class="Operator">=</span> <span class="Keyword">ref</span> <span class="Identifier">NodeObj</span> <span class="Comment"># a traced reference to a NodeObj</span>
+  <span class="Identifier">Node</span> <span class="Operator">=</span> <span class="Keyword">ref</span> <span class="Identifier">NodeObj</span> <span class="Comment"># 建立了一个对 NodeObj 的跟踪引用</span>
   <span class="Identifier">NodeObj</span> <span class="Operator">=</span> <span class="Keyword">object</span>
-    <span class="Identifier">le</span><span class="Punctuation">,</span> <span class="Identifier">ri</span><span class="Punctuation">:</span> <span class="Identifier">Node</span>     <span class="Comment"># left and right subtrees</span>
-    <span class="Identifier">sym</span><span class="Punctuation">:</span> <span class="Keyword">ref</span> <span class="Identifier">Sym</span>     <span class="Comment"># leaves contain a reference to a Sym</span>
+    <span class="Identifier">le</span><span class="Punctuation">,</span> <span class="Identifier">ri</span><span class="Punctuation">:</span> <span class="Identifier">Node</span>     <span class="Comment"># 左右子树</span>
+    <span class="Identifier">sym</span><span class="Punctuation">:</span> <span class="Keyword">ref</span> <span class="Identifier">Sym</span>     <span class="Comment"># 叶子包含了对 Sym 的引用</span>
   
-  <span class="Identifier">Sym</span> <span class="Operator">=</span> <span class="Keyword">object</span>       <span class="Comment"># a symbol</span>
-    <span class="Identifier">name</span><span class="Punctuation">:</span> <span class="Identifier">string</span>     <span class="Comment"># the symbol's name</span>
-    <span class="Identifier">line</span><span class="Punctuation">:</span> <span class="Identifier">int</span>        <span class="Comment"># the line the symbol was declared in</span>
-    <span class="Identifier">code</span><span class="Punctuation">:</span> <span class="Identifier">PNode</span>      <span class="Comment"># the symbol's abstract syntax tree</span></pre>
+  <span class="Identifier">Sym</span> <span class="Operator">=</span> <span class="Keyword">object</span>       <span class="Comment"># 符号</span>
+    <span class="Identifier">name</span><span class="Punctuation">:</span> <span class="Identifier">string</span>     <span class="Comment"># 符号的名字</span>
+    <span class="Identifier">line</span><span class="Punctuation">:</span> <span class="Identifier">int</span>        <span class="Comment"># 符号声明所在的行</span>
+    <span class="Identifier">code</span><span class="Punctuation">:</span> <span class="Identifier">PNode</span>      <span class="Comment"># 符号的抽象语法树</span></pre>
 <h2><a class="toc-backref" id="type-conversions" href="#type-conversions">Type conversions</a></h2><p>Nim distinguishes between <span id="type-casts_1">type casts</span> and <span id="type-conversions_1">type conversions</span>. Casts are done with the <tt class="docutils literal"><span class="pre">cast</span></tt> operator and force the compiler to interpret a bit pattern to be of another type.</p>
 <p>Type conversions are a much more polite way to convert a type into another: They preserve the abstract <em>value</em>, not necessarily the <em>bit-pattern</em>. If a type conversion is not possible, the compiler complains or an exception is raised.</p>
 <p>The syntax for type conversions is <tt class="docutils literal"><span class="pre">destination_type(expression_to_convert)</span></tt> (like an ordinary call):</p>
@@ -1750,7 +1750,7 @@ StmtList
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-03-13 21:25:47 UTC</small>
+        <small>Made with Nim. Generated: 2015-03-14 19:31:03 UTC</small>
       </div>
     </div>
   </div>
