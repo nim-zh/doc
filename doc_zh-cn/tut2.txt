@@ -111,27 +111,26 @@ Nim 区分了`类型强转(cast)`:idx:与`类型转换`:idx: 。强转使用 ``c
 
 如果 ``x`` 不是 ``Student`` ，将会引发 ``InvalidObjectConversionError`` 异常。
 
-Object variants
+对象可变量
 ---------------
-Often an object hierarchy is overkill in certain situations where simple
-variant types are needed.
+在实际场景中，如果只是需要一个简单的可变类型，用对象继承通常就有点大材小用了。
 
-An example:
+例:
 
 .. code-block:: nim
 
-  # This is an example how an abstract syntax tree could be modelled in Nim
+  # 这是一个关于怎么在 Nim 中模拟抽象语法树的例子
   type
-    NodeKind = enum  # the different node types
-      nkInt,          # a leaf with an integer value
-      nkFloat,        # a leaf with a float value
-      nkString,       # a leaf with a string value
-      nkAdd,          # an addition
-      nkSub,          # a subtraction
-      nkIf            # an if statement
+    NodeKind = enum   # 不用的节点类型
+      nkInt,          # 整数叶子
+      nkFloat,        # 浮点叶子
+      nkString,       # 字符串叶子
+      nkAdd,          # 加法
+      nkSub,          # 减法
+      nkIf            # if语句
     Node = ref NodeObj
     NodeObj = object
-      case kind: NodeKind  # the ``kind`` field is the discriminator
+      case kind: NodeKind  # ``kind`` 字段是一个识别器
       of nkInt: intVal: int
       of nkFloat: floatVal: float
       of nkString: strVal: string
@@ -141,52 +140,43 @@ An example:
         condition, thenPart, elsePart: PNode
 
   var n = PNode(kind: nkFloat, floatVal: 1.0)
-  # the following statement raises an `FieldError` exception, because
-  # n.kind's value does not fit:
+  # 下面的语句引发一个 `FieldError` 异常，因为 n.kind 的值不匹配
   n.strVal = ""
 
-As can been seen from the example, an advantage to an object hierarchy is that
-no conversion between different object types is needed. Yet, access to invalid
-object fields raises an exception.
+从例子中可以看到，对象可变量较对象继承还有一个优点，不需要对不同的类型作类型
+转换。当然，访问无效的对象字段会引发异常。
 
 
-Methods
+方法
 -------
-In ordinary object oriented languages, procedures (also called *methods*) are
-bound to a class. This has disadvantages:
+在传统的面向对象语言中，过程(也叫作*方法*)与类绑定在一起。这样有一些缺点：
 
-* Adding a method to a class the programmer has no control over is
-  impossible or needs ugly workarounds.
-* Often it is unclear where the method should belong to: is
-  ``join`` a string method or an array method?
+* 无法向类中添加方法，或者必须使用丑陋的变通手段。
+* 方法究竟属于谁通常很纠结： ``join`` 是 string 的方法呢还是 array的方法呢？
 
-Nim avoids these problems by not assigning methods to a class. All methods
-in Nim are multi-methods. As we will see later, multi-methods are
-distinguished from procs only for dynamic binding purposes.
+Nim 并不将方法指定给类，因此回避了这些问题。所有的方法在 Nim 中都是复方法(
+multi-methods)。随后我们会看到，复方法不同于 proc ，它只用于动态绑定。
 
 
-Method call syntax
+方法调用的语法
 ------------------
 
-There is a syntactic sugar for calling routines:
-The syntax ``obj.method(args)`` can be used instead of ``method(obj, args)``.
-If there are no remaining arguments, the parentheses can be omitted:
-``obj.len`` (instead of ``len(obj)``).
+对于日常的调用有一个语法糖：
+可以用 ``对象.方法(参数)`` 的语法代替 ``方法(对象，参数)`` 的形式。如果没有
+剩余参数，小括号可以省去： ``对象.len`` (本来是 ``len(对象)`` )。
 
-This method call syntax is not restricted to objects, it can be used
-for any type:
+这种调用的语法不局限于对象，可用于任何类型：
 
 .. code-block:: nim
 
-  echo("abc".len) # is the same as echo(len("abc"))
+  echo("abc".len) # 与 echo(len("abc")) 同
   echo("abc".toUpper())
   echo({'a', 'b', 'c'}.card)
-  stdout.writeln("Hallo") # the same as writeln(stdout, "Hallo")
+  stdout.writeln("Hallo") # 与 writeln(stdout, "Hallo") 同
 
-(Another way to look at the method call syntax is that it provides the missing
-postfix notation.)
+(另一个方法调用语法要注意的点是，它提供了原本没有的后缀记法)
 
-So "pure object oriented" code is easy to write:
+所以"纯面向对象"的代码写起来很容易:
 
 .. code-block:: nim
   import strutils
