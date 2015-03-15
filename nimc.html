@@ -1277,121 +1277,121 @@ nim 命令 [选项] [项目文件] [程序参数]</pre>
 <p>Note, single letter options that take an argument require a colon. E.g. -p:PATH. </p>
 <hr />
 <p>高级命令行参数：</p>
-<dl class="docutils"><dt>Advanced commands:</dt>
-<dd><table frame="void"><tr><th align="left">compileToC, cc</th><td align="left">compile project with C code generator</td>
+<dl class="docutils"><dt>高级命令:</dt>
+<dd><table frame="void"><tr><th align="left">compileToC, cc</th><td align="left">编译程序到C</td>
 </tr>
-<tr><th align="left">compileToCpp, cpp</th><td align="left">compile project to C++ code</td>
+<tr><th align="left">compileToCpp, cpp</th><td align="left">编译程序到C++</td>
 </tr>
-<tr><th align="left">compileToOC, objc</th><td align="left">compile project to Objective C code</td>
+<tr><th align="left">compileToOC, objc</th><td align="left">编译程序到Objective-C</td>
 </tr>
-<tr><th align="left">js</th><td align="left">compile project to Javascript</td>
+<tr><th align="left">js</th><td align="left">编译程序到Javascript</td>
 </tr>
-<tr><th align="left">rst2html</th><td align="left">convert a reStructuredText file to HTML</td>
+<tr><th align="left">rst2html</th><td align="left">将reStructuredText文件转换到HTML</td>
 </tr>
-<tr><th align="left">rst2tex</th><td align="left">convert a reStructuredText file to TeX</td>
+<tr><th align="left">rst2tex</th><td align="left">将reStructuredText文件转换到TeX</td>
 </tr>
-<tr><th align="left">jsondoc</th><td align="left">extract the documentation to a json file</td>
+<tr><th align="left">jsondoc</th><td align="left">将文档解压到JSON文件</td>
 </tr>
-<tr><th align="left">buildIndex</th><td align="left">build an index for the whole documentation</td>
+<tr><th align="left">buildIndex</th><td align="left">为整个文档构建索引</td>
 </tr>
-<tr><th align="left">run</th><td align="left">run the project (with Tiny C backend; buggy!)</td>
+<tr><th align="left">run</th><td align="left">运行程序 (使用简易C后端; 超多bug!)</td>
 </tr>
-<tr><th align="left">genDepend</th><td align="left">generate a DOT file containing the module dependency graph</td>
+<tr><th align="left">genDepend</th><td align="left">生成一个包含模块依赖图的DOT文件</td>
 </tr>
-<tr><th align="left">dump</th><td align="left">dump all defined conditionals and search paths</td>
+<tr><th align="left">dump</th><td align="left">转储所有定义的条件和搜索路径</td>
 </tr>
-<tr><th align="left">check</th><td align="left">checks the project for syntax and semantic</td>
+<tr><th align="left">check</th><td align="left">检查程序的语法和语义</td>
 </tr>
-<tr><th align="left">idetools</th><td align="left">compiler support for IDEs: possible options:<table frame="void"><tr><th align="left">--track:FILE,LINE,COL</th><td align="left">track a file/cursor position</td>
+<tr><th align="left">idetools</th><td align="left">对IDE的编译器支持: 可能的选项:<table frame="void"><tr><th align="left">--track:FILE,LINE,COL</th><td align="left">追踪文件/光标位置</td>
 </tr>
-<tr><th align="left">--trackDirty:DIRTY_FILE,ORIG_FILE,LINE,COL</th><td align="left">track a file, currently not saved to disk</td>
+<tr><th align="left">--trackDirty:DIRTY_FILE,ORIG_FILE,LINE,COL</th><td align="left">追踪目前还没有保存到磁盘的文件</td>
 </tr>
-<tr><th align="left">--suggest</th><td align="left">suggest all possible symbols at position</td>
+<tr><th align="left">--suggest</th><td align="left">建议当前位置的所有可能的symbol</td>
 </tr>
-<tr><th align="left">--def</th><td align="left">list all possible definitions at position</td>
+<tr><th align="left">--def</th><td align="left">列出当前位置所有可能的定义</td>
 </tr>
-<tr><th align="left">--context</th><td align="left">list possible invocation context</td>
+<tr><th align="left">--context</th><td align="left">列出可能的上下文调用</td>
 </tr>
-<tr><th align="left">--usages</th><td align="left">list all usages of the symbol at position</td>
+<tr><th align="left">--usages</th><td align="left">列出当前位置symbol所有的用法</td>
 </tr>
-<tr><th align="left">--eval</th><td align="left">evaluates an expression</td>
+<tr><th align="left">--eval</th><td align="left">计算一个表达式</td>
 </tr>
-<tr><th align="left">serve</th><td align="left">start the compiler as a service mode (CAAS)</td>
+<tr><th align="left">serve</th><td align="left">以编译服务模式运行 (CAAS)</td>
 </tr>
-<tr><th align="left">--server.type:TYPE</th><td align="left">either stdin or tcp</td>
+<tr><th align="left">--server.type:TYPE</th><td align="left">服务类型：stdin或tcp</td>
 </tr>
-<tr><th align="left">--server.port:PORT</th><td align="left">port for tcp mode, by default 6000</td>
+<tr><th align="left">--server.port:PORT</th><td align="left">TCP端口, 默认6000</td>
 </tr>
-<tr><th align="left">--server.address:HOST</th><td align="left">binds to that address, by default &quot;&quot;</td>
+<tr><th align="left">--server.address:HOST</th><td align="left">绑定到该地址, 默认 &quot;&quot;</td>
 </tr>
 </table></td>
 </tr>
-</table><p>Advanced options:</p>
-<table frame="void"><tr><th align="left">-o, --out:FILE</th><td align="left">set the output filename</td>
+</table><p>高级选项:</p>
+<table frame="void"><tr><th align="left">-o, --out:FILE</th><td align="left">设置输出文件名</td>
 </tr>
-<tr><th align="left">--stdout</th><td align="left">output to stdout</td>
+<tr><th align="left">--stdout</th><td align="left">输出到stdout</td>
 </tr>
-<tr><th align="left">--listFullPaths</th><td align="left">list full paths in messages</td>
+<tr><th align="left">--listFullPaths</th><td align="left">用信息列出完整路径</td>
 </tr>
-<tr><th align="left">-w, --warnings:on|off</th><td align="left">turn all warnings on|off</td>
+<tr><th align="left">-w, --warnings:on|off</th><td align="left">开/关所有警告</td>
 </tr>
-<tr><th align="left">--warning[X]:on|off</th><td align="left">turn specific warning X on|off</td>
+<tr><th align="left">--warning[X]:on|off</th><td align="left">开/关特定警告X</td>
 </tr>
-<tr><th align="left">--hints:on|off</th><td align="left">turn all hints on|off</td>
+<tr><th align="left">--hints:on|off</th><td align="left">开/关所有提示</td>
 </tr>
-<tr><th align="left">--hint[X]:on|off</th><td align="left">turn specific hint X on|off</td>
+<tr><th align="left">--hint[X]:on|off</th><td align="left">开/关特定提示X</td>
 </tr>
-<tr><th align="left">--lib:PATH</th><td align="left">set the system library path</td>
+<tr><th align="left">--lib:PATH</th><td align="left">设置系统库文件路径</td>
 </tr>
-<tr><th align="left">--import:PATH</th><td align="left">add an automatically imported module</td>
+<tr><th align="left">--import:PATH</th><td align="left">添加一个&quot;自动导入&quot;的模块</td>
 </tr>
-<tr><th align="left">--include:PATH</th><td align="left">add an automatically included module</td>
+<tr><th align="left">--include:PATH</th><td align="left">添加一个&quot;自动包含&quot;的模块</td>
 </tr>
-<tr><th align="left">--nimcache:PATH</th><td align="left">set the path used for generated files</td>
+<tr><th align="left">--nimcache:PATH</th><td align="left">设置缓存路径</td>
 </tr>
-<tr><th align="left">--header:FILE</th><td align="left">the compiler should produce a .h file (FILE is optional)</td>
+<tr><th align="left">--header:FILE</th><td align="left">编译器应当生成头文件(文件路径可选)</td>
 </tr>
-<tr><th align="left">-c, --compileOnly</th><td align="left">compile only; do not assemble or link</td>
+<tr><th align="left">-c, --compileOnly</th><td align="left">仅编译; 不进行汇编和链接</td>
 </tr>
-<tr><th align="left">--noLinking</th><td align="left">compile but do not link</td>
+<tr><th align="left">--noLinking</th><td align="left">编译但不链接</td>
 </tr>
-<tr><th align="left">--noMain</th><td align="left">do not generate a main procedure</td>
+<tr><th align="left">--noMain</th><td align="left">不要生成一个Main过程</td>
 </tr>
-<tr><th align="left">--genScript</th><td align="left">generate a compile script (in the 'nimcache' subdirectory named 'compile_$project$scriptext')</td>
+<tr><th align="left">--genScript</th><td align="left">生成一个编译脚本 (在'nimcache' 子文件夹以'compile_$project$scriptext'命名)</td>
 </tr>
-<tr><th align="left">--os:SYMBOL</th><td align="left">set the target operating system (cross-compilation)</td>
+<tr><th align="left">--os:SYMBOL</th><td align="left">设定目标操作系统(交叉编译)</td>
 </tr>
-<tr><th align="left">--cpu:SYMBOL</th><td align="left">set the target processor (cross-compilation)</td>
+<tr><th align="left">--cpu:SYMBOL</th><td align="left">设定目标处理器(交叉编译)</td>
 </tr>
-<tr><th align="left">--debuginfo</th><td align="left">enables debug information</td>
+<tr><th align="left">--debuginfo</th><td align="left">启用调试信息输出</td>
 </tr>
-<tr><th align="left">-t, --passC:OPTION</th><td align="left">pass an option to the C compiler</td>
+<tr><th align="left">-t, --passC:OPTION</th><td align="left">传递选项给 C 编译器</td>
 </tr>
-<tr><th align="left">-l, --passL:OPTION</th><td align="left">pass an option to the linker</td>
+<tr><th align="left">-l, --passL:OPTION</th><td align="left">传递选项给 链接器</td>
 </tr>
-<tr><th align="left">--cincludes:DIR</th><td align="left">modify the C compiler header search path</td>
+<tr><th align="left">--cincludes:DIR</th><td align="left">修改头文件搜索路径</td>
 </tr>
-<tr><th align="left">--clibdir:DIR</th><td align="left">modify the linker library search path</td>
+<tr><th align="left">--clibdir:DIR</th><td align="left">修改库文件搜索路径</td>
 </tr>
-<tr><th align="left">--clib:LIBNAME</th><td align="left">link an additional C library (you should omit platform-specific extensions)</td>
+<tr><th align="left">--clib:LIBNAME</th><td align="left">链接一个附加的库 (你应该避免使用特定于平台的扩展)</td>
 </tr>
-<tr><th align="left">--genMapping</th><td align="left">generate a mapping file containing (Nim, mangled) identifier pairs</td>
+<tr><th align="left">--genMapping</th><td align="left">生成一个包含 (Nim, mangled)标识符对的映射文件</td>
 </tr>
-<tr><th align="left">--project</th><td align="left">document the whole project (doc2)</td>
+<tr><th align="left">--project</th><td align="left">为整个项目生成文档(doc2)</td>
 </tr>
-<tr><th align="left">--docSeeSrcUrl:url</th><td align="left">activate 'see source' for doc and doc2 commands (see doc.item.seesrc in config/nimdoc.cfg)</td>
+<tr><th align="left">--docSeeSrcUrl:url</th><td align="left">为doc和doc2命令激活 'see source' 功能 (see doc.item.seesrc in config/nimdoc.cfg)</td>
 </tr>
 <tr><th align="left">--lineDir:on|off</th><td align="left">generation of #line directive on|off</td>
 </tr>
-<tr><th align="left">--embedsrc</th><td align="left">embeds the original source code as comments in the generated output</td>
+<tr><th align="left">--embedsrc</th><td align="left">将源代码以注释嵌入到所生成的文件中</td>
 </tr>
-<tr><th align="left">--threadanalysis:on|off</th><td align="left">turn thread analysis on|off</td>
+<tr><th align="left">--threadanalysis:on|off</th><td align="left">开/关线程分析</td>
 </tr>
-<tr><th align="left">--tlsEmulation:on|off</th><td align="left">turn thread local storage emulation on|off</td>
+<tr><th align="left">--tlsEmulation:on|off</th><td align="left">开/关线程本地存储模拟</td>
 </tr>
-<tr><th align="left">--taintMode:on|off</th><td align="left">turn taint mode on|off</td>
+<tr><th align="left">--taintMode:on|off</th><td align="left">开/关污染模式</td>
 </tr>
-<tr><th align="left">--implicitStatic:on|off</th><td align="left">turn implicit compile time evaluation on|off</td>
+<tr><th align="left">--implicitStatic:on|off</th><td align="left">开/关隐含编译耗时评判</td>
 </tr>
 <tr><th align="left">--patterns:on|off</th><td align="left">turn pattern matching on|off</td>
 </tr>
@@ -1407,7 +1407,7 @@ nim 命令 [选项] [项目文件] [程序参数]</pre>
 </tr>
 <tr><th align="left">--index:on|off</th><td align="left">turn index file generation on|off</td>
 </tr>
-<tr><th align="left">--putenv:key=value</th><td align="left">set an environment variable</td>
+<tr><th align="left">--putenv:key=value</th><td align="left">设置一个环境变量</td>
 </tr>
 <tr><th align="left">--NimblePath:PATH</th><td align="left">add a path for Nimble support</td>
 </tr>
@@ -1421,11 +1421,11 @@ nim 命令 [选项] [项目文件] [程序参数]</pre>
 </tr>
 <tr><th align="left">--parallelBuild:0|1|...</th><td align="left">perform a parallel build value = number of processors (0 for auto-detect)</td>
 </tr>
-<tr><th align="left">--verbosity:0|1|2|3</th><td align="left">set Nim's verbosity level (1 is default)</td>
+<tr><th align="left">--verbosity:0|1|2|3</th><td align="left">设置Nim的&quot;啰嗦&quot;程度 (默认值是1)</td>
 </tr>
-<tr><th align="left">--experimental</th><td align="left">enable experimental language features</td>
+<tr><th align="left">--experimental</th><td align="left">启用实验性语言特性</td>
 </tr>
-<tr><th align="left">-v, --version</th><td align="left">show detailed version information</td>
+<tr><th align="left">-v, --version</th><td align="left">显示详细的版本信息</td>
 </tr>
 </table></dd>
 </dl>
@@ -1760,7 +1760,7 @@ nim c --cpu:avr --os:standalone --deadCodeElim:on --genScript x.nim</pre>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-03-13 21:16:09 UTC</small>
+        <small>Made with Nim. Generated: 2015-03-15 17:19:14 UTC</small>
       </div>
     </div>
   </div>
