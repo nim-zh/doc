@@ -95,27 +95,21 @@ Objects, tuples 及引用(references)可以塑造出相互依赖的相当复杂�
       code: PNode      # 符号的抽象语法树
 
 
-Type conversions
+类型转换
 ----------------
-Nim distinguishes between `type casts`:idx: and `type conversions`:idx:.
-Casts are done with the ``cast`` operator and force the compiler to
-interpret a bit pattern to be of another type.
+Nim 区分了`类型强转(cast)`:idx:与`类型转换`:idx: 。强转使用 ``cast`` 运算符
+强制编译器按位的方式将原始类型转为新的类型。
 
-Type conversions are a much more polite way to convert a type into another:
-They preserve the abstract *value*, not necessarily the *bit-pattern*. If a
-type conversion is not possible, the compiler complains or an exception is
-raised.
+类型转换将一个类型转为另一个类型的方式更加文雅：它维持了抽象的*值*，而不必用
+*位模式*。如果不能进行转换，编译器就会发挠骚或者引发一个异常。
 
-The syntax for type conversions is ``destination_type(expression_to_convert)``
-(like an ordinary call):
+类型转换的语法为 ``目标类型(要转换的表达式)`` (就像普通调用一样)：
 
 .. code-block:: nim
   proc getID(x: Person): int =
     Student(x).id
 
-The ``InvalidObjectConversionError`` exception is raised if ``x`` is not a
-``Student``.
-
+如果 ``x`` 不是 ``Student`` ，将会引发 ``InvalidObjectConversionError`` 异常。
 
 Object variants
 ---------------
