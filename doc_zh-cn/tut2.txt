@@ -186,38 +186,34 @@ multi-methods)。随后我们会看到，复方法不同于 proc ，它只用于
   stdout.writeln(" is the maximum!")
 
 
-Properties
+属性
 ----------
-As the above example shows, Nim has no need for *get-properties*:
-Ordinary get-procedures that are called with the *method call syntax* achieve
-the same. But setting a value is different; for this a special setter syntax
-is needed:
+如上面的例子所示， Nim 不需要 *get属性*: 传统的 get过程 可以用 *方法调用语法*
+来获得相同的效果。但是 set 值不一样，所以需要一个特殊的 setter 语法：
 
 .. code-block:: nim
 
   type
     Socket* = object of RootObj
-      FHost: int # cannot be accessed from the outside of the module
-                 # the `F` prefix is a convention to avoid clashes since
-                 # the accessors are named `host`
+      FHost: int # 不能在这个模块之外访问
+                 # `F` 前缀是为了避免与已经名为 `host` 的访问器冲突的惯例。
 
   proc `host=`*(s: var Socket, value: int) {.inline.} =
-    ## setter of hostAddr
+    ## hostAddr 的 setter
     s.FHost = value
 
   proc host*(s: Socket): int {.inline.} =
-    ## getter of hostAddr
+    ## hostAddr 的 getter
     s.FHost
 
   var
     s: Socket
-  s.host = 34  # same as `host=`(s, 34)
+  s.host = 34  # 与 `host=`(s, 34) 同
 
-(The example also shows ``inline`` procedures.)
+(示例中同时展示了 ``inline`` 过程。)
 
 
-The ``[]`` array access operator can be overloaded to provide
-`array properties`:idx:\ :
+数组访问运算符 ``[]`` 可以重载以用于 `数组属性`:idx:\ :
 
 .. code-block:: nim
   type
@@ -240,8 +236,8 @@ The ``[]`` array access operator can be overloaded to provide
     of 2: result = v.z
     else: assert(false)
 
-The example is silly, since a vector is better modelled by a tuple which
-already provides ``v[]`` access.
+这个示例其实没什么用， vector 用 tuple 来模拟更好，后者已经提供了 ``v[]``
+用于访问。
 
 
 Dynamic dispatch
