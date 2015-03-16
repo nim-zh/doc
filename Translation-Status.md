@@ -63,7 +63,7 @@
 - [ ] subexes.txt
 - [ ] tools.txt
 - [ ] tut1.txt (7%)
-- [ ] tut2.txt (10%)
+- [ ] tut2.txt (25%)
 
 ###验证进度
 - [ ] manual/
