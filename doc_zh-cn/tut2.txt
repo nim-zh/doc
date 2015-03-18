@@ -240,23 +240,22 @@ multi-methods)。随后我们会看到，复方法不同于 proc ，它只用于
 用于访问。
 
 
-Dynamic dispatch
+动态派发
 ----------------
 
-Procedures always use static dispatch. For dynamic dispatch replace the
-``proc`` keyword by ``method``:
+过程为静态派发，若要使用动态派发，则要将关键字 ``proc`` 换为 ``method`` ：
 
 .. code-block:: nim
   type
-    PExpr = ref object of RootObj ## abstract base class for an expression
+    PExpr = ref object of RootObj ## 表达式类型的抽象基类
     PLiteral = ref object of PExpr
       x: int
     PPlusExpr = ref object of PExpr
       a, b: PExpr
 
-  # watch out: 'eval' relies on dynamic binding
+  # 注意: 'eval' 依赖动态绑定
   method eval(e: PExpr): int =
-    # override this base method
+    # 要重载这个基类方法
     quit "to override!"
 
   method eval(e: PLiteral): int = e.x
@@ -267,12 +266,10 @@ Procedures always use static dispatch. For dynamic dispatch replace the
 
   echo eval(newPlus(newPlus(newLit(1), newLit(2)), newLit(4)))
 
-Note that in the example the constructors ``newLit`` and ``newPlus`` are procs
-because it makes more sense for them to use static binding, but ``eval`` is a
-method because it requires dynamic binding.
+注意在示例中构造器 ``newLit`` 和 ``newPlus`` 都是 proc ，因为静态绑定更好。但是
+``eval`` 是 method ，因为这里需要动态绑定。
 
-In a multi-method all parameters that have an object type are used for the
-dispatching:
+复方法参数中所有的 object 类型参数都用于派发:
 
 .. code-block:: nim
 
@@ -292,17 +289,15 @@ dispatching:
 
   var
     a, b: Unit
-  collide(a, b) # output: 2
+  collide(a, b) # 输出: 2
 
 
-As the example demonstrates, invocation of a multi-method cannot be ambiguous:
-Collide 2 is preferred over collide 1 because the resolution works from left to
-right. Thus ``Unit, Thing`` is preferred over ``Thing, Unit``.
+如上所示，复方法调用不能有歧义：输出2的 collide 比输出1的匹配更佳，因为重载决议是
+从左到右进行的。因此 ``Unit, Thing`` 比 ``Thing, Unit`` 更优。
 
-**Performance note**: Nim does not produce a virtual method table, but
-generates dispatch trees. This avoids the expensive indirect branch for method
-calls and enables inlining. However, other optimizations like compile time
-evaluation or dead code elimination do not work with methods.
+**性能说明**: Nim 没有使用虚方法表来实现派发，而是用的生成派发树，因而避免了方法
+间接调用的性能损失，也因此可以让方法内联。但是方法不能进行其他的优化，比如编译期
+求值或无效代码清除。
 
 
 Exceptions
