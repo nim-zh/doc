@@ -1,5 +1,7 @@
 # Nim 语言文档中文翻译
 
+[![Join the chat at https://gitter.im/nim-zh/doc](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nim-zh/doc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 译自：<https://github.com/Araq/Nim/tree/devel/doc>
 
 文档格式为 reStructuredText，可以在[这里](http://nim-lang.org/rst.html)找到格式规范。使用`nim rst2html`命令转换为 HTML。
